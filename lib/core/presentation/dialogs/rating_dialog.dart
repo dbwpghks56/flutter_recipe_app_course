@@ -60,7 +60,6 @@ class _RatingDialogState extends State<RatingDialog> {
 
 class _RatingBar extends StatelessWidget {
   const _RatingBar({
-    super.key,
     required this.value,
     required this.onChange,
   });
