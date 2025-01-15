@@ -7,9 +7,13 @@ class SmallButton extends StatefulWidget {
     this.text, {
     super.key,
     required this.onPressed,
+    this.color = ColorStyles.primaryColor,
+    this.textStyle = TextStyles.normalTextBold,
   });
 
   final String text;
+  final Color color;
+  final TextStyle textStyle;
   final void Function() onPressed;
 
   @override
@@ -42,12 +46,12 @@ class _SmallButtonState extends State<SmallButton> {
         height: 37,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
-          color: isPressed ? ColorStyles.gray4 : ColorStyles.primaryColor,
+          color: isPressed ? ColorStyles.gray4 : widget.color,
         ),
         child: Center(
           child: Text(
             widget.text,
-            style: TextStyles.normalTextBold.copyWith(
+            style: widget.textStyle.copyWith(
               color: ColorStyles.white,
             ),
           ),
