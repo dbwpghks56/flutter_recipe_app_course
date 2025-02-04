@@ -7,9 +7,12 @@ import '../../ui/text_styles.dart';
 
 class SignInScreen extends StatelessWidget {
   final void Function() onSignUp;
+  final void Function() onSignIn;
+
   const SignInScreen({
     super.key,
     required this.onSignUp,
+    required this.onSignIn,
   });
 
   @override
@@ -50,7 +53,7 @@ class SignInScreen extends StatelessWidget {
               const SizedBox(height: 25),
               BigButton(
                 "Sign In",
-                onPressed: () {},
+                onPressed: onSignIn,
               ),
               const SizedBox(height: 20),
               Row(

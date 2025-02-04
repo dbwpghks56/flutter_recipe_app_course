@@ -30,13 +30,20 @@ final router = GoRouter(
           onSignUp: () {
             context.go('/SignUp');
           },
+          onSignIn: () {
+            context.go('/SavedRecipes');
+          },
         );
       },
     ),
     GoRoute(
       path: '/SignUp',
       builder: (context, state) {
-        return const SignUpScreen();
+        return SignUpScreen(
+          onSignIn: () {
+            context.go('/SignIn');
+          },
+        );
       },
     ),
     GoRoute(
