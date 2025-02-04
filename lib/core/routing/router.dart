@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_recipe_app_course/core/routing/route_paths.dart';
 import 'package:flutter_recipe_app_course/presentation/sign_in/sign_in_screen.dart';
 import 'package:flutter_recipe_app_course/presentation/sign_up/sign_up_screen.dart';
 import 'package:flutter_recipe_app_course/presentation/splash/splash_screen.dart';
@@ -11,43 +12,43 @@ import '../../domain/use_case/get_saved_recipes_use_case.dart';
 import '../../presentation/saved_recipes/saved_recipes_screen.dart';
 
 final router = GoRouter(
-  initialLocation: '/Splash',
+  initialLocation: RoutePaths.splash,
   routes: [
     GoRoute(
-      path: '/Splash',
+      path: RoutePaths.splash,
       builder: (context, state) {
         return SplashScreen(
           onStartCooking: () {
-            context.go('/SignIn');
+            context.go(RoutePaths.signIn);
           },
         );
       },
     ),
     GoRoute(
-      path: '/SignIn',
+      path: RoutePaths.signIn,
       builder: (context, state) {
         return SignInScreen(
           onSignUp: () {
-            context.go('/SignUp');
+            context.go(RoutePaths.signUp);
           },
           onSignIn: () {
-            context.go('/SavedRecipes');
+            context.go(RoutePaths.savedRecipes);
           },
         );
       },
     ),
     GoRoute(
-      path: '/SignUp',
+      path: RoutePaths.signUp,
       builder: (context, state) {
         return SignUpScreen(
           onSignIn: () {
-            context.go('/SignIn');
+            context.go(RoutePaths.signIn);
           },
         );
       },
     ),
     GoRoute(
-      path: '/SavedRecipes',
+      path: RoutePaths.savedRecipes,
       builder: (context, state) {
         return FutureBuilder<List<Recipe>>(
           future: GetSavedRecipesUseCase(
