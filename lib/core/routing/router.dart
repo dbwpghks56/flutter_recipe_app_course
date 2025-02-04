@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_recipe_app_course/presentation/sign_in/sign_in_screen.dart';
+import 'package:flutter_recipe_app_course/presentation/sign_up/sign_up_screen.dart';
 import 'package:flutter_recipe_app_course/presentation/splash/splash_screen.dart';
 import 'package:go_router/go_router.dart';
 
@@ -15,13 +16,27 @@ final router = GoRouter(
     GoRoute(
       path: '/Splash',
       builder: (context, state) {
-        return const SplashScreen();
+        return SplashScreen(
+          onStartCooking: () {
+            context.go('/SignIn');
+          },
+        );
       },
     ),
     GoRoute(
       path: '/SignIn',
       builder: (context, state) {
-        return const SignInScreen();
+        return SignInScreen(
+          onSignUp: () {
+            context.go('/SignUp');
+          },
+        );
+      },
+    ),
+    GoRoute(
+      path: '/SignUp',
+      builder: (context, state) {
+        return const SignUpScreen();
       },
     ),
     GoRoute(

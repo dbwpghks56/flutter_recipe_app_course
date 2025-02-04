@@ -7,6 +7,7 @@ import 'package:flutter_recipe_app_course/core/presentation/components/rating_bu
 import 'package:flutter_recipe_app_course/core/presentation/components/small_button.dart';
 import 'package:flutter_recipe_app_course/core/presentation/components/two_tab.dart';
 import 'package:flutter_recipe_app_course/core/presentation/dialogs/rating_dialog.dart';
+import 'package:flutter_recipe_app_course/ui/color_styles.dart';
 import 'package:flutter_recipe_app_course/ui/text_styles.dart';
 
 import 'core/routing/router.dart';
@@ -26,7 +27,9 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        colorScheme: const ColorScheme.light(),
+        colorScheme: const ColorScheme.light(
+          primary: ColorStyles.primary100,
+        ),
         scaffoldBackgroundColor: Colors.white,
         useMaterial3: true,
       ),

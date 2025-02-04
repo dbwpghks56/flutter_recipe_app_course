@@ -6,7 +6,11 @@ import 'package:flutter_recipe_app_course/ui/color_styles.dart';
 import '../../ui/text_styles.dart';
 
 class SignInScreen extends StatelessWidget {
-  const SignInScreen({super.key});
+  final void Function() onSignUp;
+  const SignInScreen({
+    super.key,
+    required this.onSignUp,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -100,10 +104,13 @@ class SignInScreen extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(width: 5),
-                  Text(
-                    "Sign Up",
-                    style: TextStyles.smallerTextRegular.copyWith(
-                      color: ColorStyles.secondary100,
+                  GestureDetector(
+                    onTap: onSignUp,
+                    child: Text(
+                      "Sign Up",
+                      style: TextStyles.smallerTextRegular.copyWith(
+                        color: ColorStyles.secondary100,
+                      ),
                     ),
                   ),
                 ],
