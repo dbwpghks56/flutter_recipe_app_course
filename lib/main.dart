@@ -7,7 +7,11 @@ import 'package:flutter_recipe_app_course/core/presentation/components/rating_bu
 import 'package:flutter_recipe_app_course/core/presentation/components/small_button.dart';
 import 'package:flutter_recipe_app_course/core/presentation/components/two_tab.dart';
 import 'package:flutter_recipe_app_course/core/presentation/dialogs/rating_dialog.dart';
-import 'package:flutter_recipe_app_course/presentation/sign_in/sign_in_screen.dart';
+import 'package:flutter_recipe_app_course/data/repository/mock_bookmark_repository_impl.dart';
+import 'package:flutter_recipe_app_course/data/repository/mock_recipe_repository_impl.dart';
+import 'package:flutter_recipe_app_course/domain/model/recipe.dart';
+import 'package:flutter_recipe_app_course/domain/use_case/get_saved_recipes_use_case.dart';
+import 'package:flutter_recipe_app_course/presentation/saved_recipes/saved_recipes_screen.dart';
 import 'package:flutter_recipe_app_course/ui/text_styles.dart';
 
 void main() {
@@ -24,10 +28,26 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: const ColorScheme.light(),
+        scaffoldBackgroundColor: Colors.white,
         useMaterial3: true,
       ),
-      home: const SignInScreen(),
+      home: FutureBuilder<List<Recipe>>(
+          future: GetSavedRecipesUseCase(
+            recipeRepository: MockRecipeRepositoryImpl(),
+            bookmarkRepository: MockBookmarkRepositoryImpl(),
+          ).execute(),
+          builder: (context, snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return Center(
+                child: CircularProgressIndicator(),
+              );
+            }
+
+            final recipes = snapshot.data!;
+
+            return SavedRecipesScreen(recipes: recipes,);
+          }),
     );
   }
 }
