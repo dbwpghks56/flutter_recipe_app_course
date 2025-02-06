@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_recipe_app_course/domain/model/recipe.dart';
 import 'package:flutter_recipe_app_course/ui/text_styles.dart';
 
-import '../../core/presentation/components/recipe_card.dart';
+import '../../../core/presentation/components/recipe_card.dart';
 
 class SavedRecipesScreen extends StatelessWidget {
   final List<Recipe> recipes;
