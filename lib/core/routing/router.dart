@@ -64,7 +64,9 @@ final router = GoRouter(
             GoRoute(
               path: RoutePaths.home,
               builder: (context, state) {
-                return const HomeScreen();
+                return const HomeScreen(
+                  name: "John Doe",
+                );
               },
             ),
           ],
