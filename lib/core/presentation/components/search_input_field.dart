@@ -7,8 +7,10 @@ class SearchInputField extends StatelessWidget {
     super.key,
     required this.placeHolder,
     this.controller,
+    this.isReadOnly = false,
   });
   final String placeHolder;
+  final bool isReadOnly;
   final TextEditingController? controller;
 
   @override
@@ -16,6 +18,7 @@ class SearchInputField extends StatelessWidget {
     return SizedBox(
       height: 40,
       child: TextField(
+        readOnly: isReadOnly,
         controller: controller,
         decoration: InputDecoration(
           prefixIcon: Icon(
