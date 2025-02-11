@@ -34,9 +34,13 @@ class SearchViewModel extends ChangeNotifier {
     _state = _state.copyWith(isLoading: true);
     notifyListeners();
 
+    final _recipes = await await _searchRecipesUseCase.execute(query);
+
     _state = _state.copyWith(
-      recipes: await _searchRecipesUseCase.execute(query),
+      recipes: _recipes,
       isLoading: false,
+      searchTitle: "Search Results",
+      resultsCount: "${_recipes.length} results",
     );
     notifyListeners();
   }

@@ -62,9 +62,20 @@ class SearchScreen extends StatelessWidget {
             SizedBox(
               height: 20,
             ),
-            Text(
-              "Recent Search",
-              style: TextStyles.normalTextBold,
+            Row(
+              children: [
+                Text(
+                  state.searchTitle,
+                  style: TextStyles.normalTextBold,
+                ),
+                const Spacer(),
+                Text(
+                  state.resultsCount,
+                  style: TextStyles.smallerTextRegular.copyWith(
+                    color: ColorStyles.gray3,
+                  ),
+                ),
+              ],
             ),
             SizedBox(
               height: 20,
