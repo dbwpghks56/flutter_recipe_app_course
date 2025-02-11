@@ -85,20 +85,30 @@ class SearchScreen extends StatelessWidget {
                   ? Center(
                       child: CircularProgressIndicator(),
                     )
-                  : GridView.builder(
-                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 2,
-                        crossAxisSpacing: 15,
-                        mainAxisSpacing: 15,
-                      ),
-                      itemCount: state.recipes.length,
-                      itemBuilder: (context, index) {
-                        final recipe = state.recipes[index];
-                        return RecipeGridItem(
-                          recipe: recipe,
-                        );
-                      },
-                    ),
+                  : !state.recipes.isEmpty
+                      ? GridView.builder(
+                          gridDelegate:
+                              SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 2,
+                            crossAxisSpacing: 15,
+                            mainAxisSpacing: 15,
+                          ),
+                          itemCount: state.recipes.length,
+                          itemBuilder: (context, index) {
+                            final recipe = state.recipes[index];
+                            return RecipeGridItem(
+                              recipe: recipe,
+                            );
+                          },
+                        )
+                      : Center(
+                          child: Text(
+                            "No recent search recipes",
+                            style: TextStyles.normalTextRegular.copyWith(
+                              color: ColorStyles.gray3,
+                            ),
+                          ),
+                        ),
             ),
           ],
         ),
