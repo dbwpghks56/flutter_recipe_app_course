@@ -7,10 +7,12 @@ import 'package:flutter_recipe_app_course/ui/text_styles.dart';
 
 class SearchScreen extends StatelessWidget {
   final SearchState state;
+  final void Function(String query)? onChanged;
 
   const SearchScreen({
     super.key,
     required this.state,
+    this.onChanged,
   });
 
   @override
@@ -33,10 +35,11 @@ class SearchScreen extends StatelessWidget {
             ),
             Row(
               children: [
-                const Expanded(
+                Expanded(
                   child: SearchInputField(
                     isReadOnly: false,
                     placeHolder: "Search recipe",
+                    onChanged: onChanged,
                   ),
                 ),
                 SizedBox(
