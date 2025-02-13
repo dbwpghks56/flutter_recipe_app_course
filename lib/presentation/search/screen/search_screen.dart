@@ -7,11 +7,13 @@ import 'package:flutter_recipe_app_course/ui/text_styles.dart';
 
 class SearchScreen extends StatelessWidget {
   final SearchState state;
+  final void Function()? onTapFilter;
   final void Function(String query)? onChanged;
 
   const SearchScreen({
     super.key,
     required this.state,
+    this.onTapFilter,
     this.onChanged,
   });
 
@@ -45,16 +47,19 @@ class SearchScreen extends StatelessWidget {
                 SizedBox(
                   width: 20,
                 ),
-                Container(
-                  width: 40,
-                  height: 40,
-                  decoration: BoxDecoration(
-                    color: ColorStyles.primary100,
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: Icon(
-                    Icons.tune,
-                    color: ColorStyles.white,
+                GestureDetector(
+                  onTap: onTapFilter,
+                  child: Container(
+                    width: 40,
+                    height: 40,
+                    decoration: BoxDecoration(
+                      color: ColorStyles.primary100,
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: Icon(
+                      Icons.tune,
+                      color: ColorStyles.white,
+                    ),
                   ),
                 )
               ],
